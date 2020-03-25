@@ -8,6 +8,7 @@ $(function() {
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
       // get values from FORM
+
       var name = $("input#name").val();
       var email = $("input#email").val();
       var phone = $("input#phone").val();
@@ -19,6 +20,7 @@ $(function() {
       }
       $this = $("#sendMessageButton");
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+
       $.ajax({
         url: "././mail/contact_me.php",
         type: "POST",
@@ -31,23 +33,25 @@ $(function() {
         cache: false,
         success: function() {
           // Success message
-          $('#success').html("<div class='alert alert-success'>");
-          $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-success')
-            .append("<strong>Berhasil Mengirim Pesan</strong>");
-          $('#success > .alert-success')
-            .append('</div>');
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Your Message Have been sent!...',
+            footer: 'Thank You!'
+          });
+
           //clear all fields
           $('#contactForm').trigger("reset");
         },
         error: function() {
-          // Fail message
-          $('#success').html("<div class='alert alert-danger'>");
-          $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-danger').append($("<strong>").text("Mohon Maaf " + firstName + ", Terjadi Kesalahan . Please try again later!"));
-          $('#success > .alert-danger').append('</div>');
+          // Fail message with sweetalert2
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops..',
+            text: 'Can\'t Send your message!...' + firstName,
+            footer: 'please check your connection , and try again later!'
+          });
+
           //clear all fields
           $('#contactForm').trigger("reset");
         },
