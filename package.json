@@ -1,19 +1,21 @@
 {
   "name": "web-portfolio",
   "version": "1.1.0",
-  "description": "My Website Portfolio",
+  "description": "My Official Portfolio Website - Dharma Bakti Situmorang",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "no-map" : "npm build --nomaps"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luhur65/luhur65.github.io.git"
   },
   "keywords": [
-    "portfolio"
+    "portfolio",
+    "luhur65"
   ],
-  "author": " <<dharma_situmorang>",
+  "author": " @dharma_situmorang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/luhur65/luhur65.github.io/issues"
